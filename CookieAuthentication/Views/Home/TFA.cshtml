@@ -1,0 +1,31 @@
+﻿@{
+    ViewData["Title"] = "Enter Two Factor Authentication Code :";
+}
+<h1>@ViewData["Title"]</h1>
+
+<style>
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+</style>
+
+<form asp-action="TFA" method="post">
+    <div>
+        <image src="@ViewBag.QRImage" />
+        @ViewBag.ManualKey
+
+
+
+    </div>
+    <div class="form-group">
+        <label for="txtScannedCode">Enter Value:</label>
+        <input type="text" id="txtScannedCode" name="txtScannedCode" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Submit</button>
+        @if (@ViewBag.ErrorMessage != null)
+            @ViewBag.ErrorMessage
+        </div>
+    </form>
